@@ -1,5 +1,5 @@
 <?php
-// Animatic Builder v1.40
+// Animatic Builder v1.40 I'm adding more of a comment here to test my git connection. Fun stuff.
 // http://www.gnu.org/licenses/gpl-3.0.txt Licensed under the GPL. Credit where credit is due. Developed by Whitney Krape
 $connect = 'connect.php';
 
