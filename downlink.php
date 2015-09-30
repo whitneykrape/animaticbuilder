@@ -12,7 +12,7 @@ function getImages($path) {
  $found = Array();
  $images = scandir($path); // Get a list of all files in the directory.
  foreach($images as $image) {
-  if (preg_match('/\.(jpg|png|jpeg|gif)$/i',$image)) {
+  if (preg_match('/\.(jpg|png|jpeg|gif")$/i',$image)) {
    // $file ends with the regex condition, case insensitive.
    $found[] = $image;
   }

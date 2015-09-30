@@ -58,6 +58,7 @@ CACHE:
 ./structure/ab_vingette_heavy.png
 ./structure/ab_vingette_light.png
 ./structure/ajaxupload.js
+./structure/favicon.ico
 ./structure/favicon.jpg
 ./structure/jquery-1.4.2.min.js
 ./structure/jquery-ui-1.8.2.custom.min.js

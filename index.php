@@ -53,7 +53,7 @@ if (!mysqli_connect_errno() && file_exists($connect)) {
   foreach($paths as $pathe) {
    $files = scandir($pathe);
    foreach($files as $file) {
-    if (preg_match('/\.(jpg|png|jpeg|gif|css|js|php)$/i',$file)) {
+    if (preg_match('/\.(jpg|png|jpeg|gif|ico|css|js|php)$/i',$file)) {
      $cacheList[] = $pathe . $file;
     }
    }

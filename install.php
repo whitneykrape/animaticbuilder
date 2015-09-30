@@ -133,7 +133,7 @@ if (connect != 'succeed') {
   setTimeout("location.href='filmsystem.php'", [1]);
  });
 } else if (framefailed && imagefailed) {
- $('#action').fadeIn().html('Click here to set config. <img src="./structure/ab_loadnext.png" alt="Next"/>').bind('click', function () {
+ $('#action').fadeIn().html('Click here to set config framefailed. <img src="./structure/ab_loadnext.png" alt="Next"/>').bind('click', function () {
   user = $('#user').val();
   password = $('#password').val();
   database = $('#database').val();

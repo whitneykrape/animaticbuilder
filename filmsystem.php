@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html manifest="animaticbuilder.manifest">
 <!--
 Animatic Builder v1.40
 http://www.gnu.org/licenses/gpl-3.0.txt Licensed under the GPL. Credit where credit is due. Developed by Whitney Krape

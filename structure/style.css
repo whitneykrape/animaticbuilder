@@ -39,7 +39,7 @@ ul#playback_menu {
  position: relative;
  z-index: 10;
  overflow: hidden;
- height: 70px;
+ height: 140px;
 }
 
  ul#playback_menu li {
@@ -50,8 +50,8 @@ ul#playback_menu {
  ul#playback_menu li a {
   display:block;
   margin: 0 auto;
-  height:70px;
-  width:70px;
+  height: 140px;
+  width: 140px;
   cursor: pointer;
  }
  
@@ -134,6 +134,10 @@ ul#playback_menu {
   
   ul#playback_menu li ul#playpause li a#pause:active {
    background: url(ab_pause.png);
+  }
+
+  ul#playback_menu li a {
+    background-size: 100% !important;
   }
   
   ul#playback_menu li ul#playpause li {
@@ -386,7 +390,7 @@ div#timelineback {
 
 div#timeline {
  background: #1f2224;
- height: 58px;
+ height: 116px;
  margin:20px auto;
  position: relative;
  z-index: 15;
@@ -404,7 +408,7 @@ div#timeline {
    border-left:1px solid #4c5354;
    display:block;
    position: absolute;
-   height: 58px;
+   height: 116px;
   }
  
   div#timeline ul#timelinemarkers li span {
@@ -420,7 +424,7 @@ div#timeline {
  
 div#timelineback a.ui-slider-handle {
  background: url(ab_scrubber.png) center no-repeat;
- height:60px;
+ height:120px;
  position:absolute;
  margin-left:-40px;
  width:80px;
@@ -428,7 +432,7 @@ div#timelineback a.ui-slider-handle {
  text-decoration: none;
  font-size: 1.1em;
  text-align: center;
- line-height: 69px;
+ line-height: 138px;
  font-weight: bold;
 }
 
@@ -497,7 +501,7 @@ div.ui-dialog-titlebar {
   list-style: none;
   background: #4f5456;
   overflow: hidden;
-  height: 565px !important;
+  height: 545px !important;
  }
  
  ul#optionsmenu {
@@ -505,27 +509,28 @@ div.ui-dialog-titlebar {
  }
  
  ul#imagedialog li#imageviewer div#slider {
-  height:447px;
-  margin-top:22px;
-  right:0;
-  width:40px;
-  position:relative;
+    background: #777;
+    min-height: 447px;
+    border-top: 22px solid #777;
+    left: 0;
+    width: 12%;
+    position: absolute;
  }
  ul#imagedialog li#imageviewer div#slider a {
-  background: url(ab_scrollback_slider.png);
-  border:medium none;
-  height:21px;
-  left:0;
-  margin:0 4px;
-  position:absolute;
-  width:32px;
+    background: #aaa;
+    border: medium none;
+    height: 21px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    margin: 12px 0 0 0;
  }
  ul#imagedialog li#imageviewer {
-  height:470px;
-  overflow:hidden;
-  width:100%;
-  clear: both;
-  background:url(ab_scrollback_bottom.png) no-repeat left bottom;
+    height: 470px;
+    overflow: hidden;
+    width: 88%;
+    clear: both;
+    float: right;
  }
  
   ul#imagedialog li {
@@ -581,13 +586,13 @@ div.ui-dialog-titlebar {
   }
  
   li ul#imageselection {
-   float: left;
-   list-style: none;
-   width: 98%;
-   background: #2d3233;
-   margin: 0 0 10px 40px;
-   overflow: hidden;
-   position: relative;
+    float: left;
+    list-style: none;
+    width: 100%;
+    background: #2d3233;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
   }
  
   li ul#imageselection li {

@@ -1,4 +1,4 @@
 vendor/*
-config.php
-connect.php
 lumen/*
+connect.php
+config.php
