@@ -250,21 +250,21 @@ div#horizon {
   border-right: 20px solid #000;
   background: #000;
   z-index:2;
-  height:380px;
+  height:480px;
  }
  
   ul#shotlist li.shot {
    margin-left: 20px;
    float: left;
-   width: 480px;
-   height: 380px;
+   width: 580px;
+   height: 490px;
    background: #000;
   }
  
   .shot_placeholder {
    margin-left: 20px;
-   width: 480px;
-   height: 380px;
+   width: 580px;
+   height: 490px;
    background: url(ab_dragback.png);
    float: left;
   }

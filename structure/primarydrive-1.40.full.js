@@ -505,8 +505,8 @@ function primarydrive() {
   function windowFramed() {
    // Refine as the window is resized
    windowcalc = $('body').width()+16;
-   horizonwidthcalc = Math.ceil((520 / windowcalc) * 100);
-   horizonpaddingcalc = Math.floor((100 - ((520 / windowcalc) * 100)) / 2);
+   horizonwidthcalc = Math.ceil((620 / windowcalc) * 100);
+   horizonpaddingcalc = Math.floor((100 - ((620 / windowcalc) * 100)) / 2);
    // The filmstrip is centered with a defined width, add padding to fill in the rest of the screen.
    $('div#horizon').css({
     width: horizonwidthcalc + '%',
@@ -516,7 +516,7 @@ function primarydrive() {
   
   // Scroll the slider.
   function sequenceScroll(event, ui) {
-   $('ul#shotlist').animate({left: - ui.value * 500 }, 0);
+   $('ul#shotlist').animate({left: - ui.value * 600 }, 0);
     currentframe = $('#timeline').slider('value');
     currentframeRounded = Math.round(currentframe)
     
