@@ -2,3 +2,4 @@ vendor/*
 lumen/*
 connect.php
 config.php
+/nbproject/private/
