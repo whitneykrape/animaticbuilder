@@ -38,7 +38,10 @@
     <body>
         <div class="container">
             <div class="content">
+                <div id="flash_error">{{ Session::get('message') }}</div>
                 <div class="title">{{ $frames }}</div>
+                
+                <div class="title">{{ $user }}</div>
             </div>
         </div>
     </body>

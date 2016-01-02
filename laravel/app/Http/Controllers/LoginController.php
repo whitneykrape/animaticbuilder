@@ -3,16 +3,16 @@
 use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Input;
+
 
 class LoginController extends Controller {
 
     public function chooseService($service) {
         $message = "Logged in via: " . $service;
         
-        $action = \Input::get( 'action' );
-        
-        echo $action;
-        
+        $action = Input::get( 'action' );
+                
         // check URL segment
         if ($service == "auth") {
             // process authentication
@@ -38,37 +38,19 @@ class LoginController extends Controller {
             return $e->getMessage(); 
         }
         // access user profile data
-        /* $message .= "Connected with: <b>{$provider->id}</b><br />";
+        $message .= "Connected with: <b>{$provider->id}</b><br />";
         $message .= "As: <b>{$userProfile->displayName}</b><br />";
-        $message .= "<pre>" . print_r( $userProfile, true ) . "</pre><br />"; */
-                
+        $message .= "<pre>" . print_r( $userProfile, true ) . "</pre><br />";
+              
         $user = User::where('email', '=', $userProfile->email)->first();
         
-        if ($user) {
-            //$message = 'Google Login Success!';
-            \Session::flash('message', $message);
-
-            echo $userProfile->email;
-            \Auth::login($user);
-
-            $provider->logout();
-            return \Redirect::to('/');
-        } else {
-            $message = 'Google Login Failed ' . print_r( $userProfile, true );
-            \Session::flash('message', $message);
-
-            /* $user = new User;
-            $user->name = $userProfile->displayName;
-            $user->email = $userProfile->email;
-            //$user->status = 0;
-            $user->save();
-            
-            \Auth::login($user); */
-
-            $provider->logout();
-            return \Redirect::to('/');
+        if (\Auth::attempt(['email' => $userProfile->email])) {
+            $user = \Auth::user();
+            echo $user;
         }
         
-        //return \View::make('login.index')->with('login', $message);
+  
+        
+        //return \Redirect::to('/');
     }
 }
