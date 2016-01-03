@@ -14,11 +14,19 @@ class CreateAnimaticbuilderTable extends Migration
     {
         Schema::create('frames', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sequence');
             $table->integer('user_id');
             $table->bigInteger('shotid');
             $table->string('name');
             $table->bigInteger('duration');
             $table->string('image');
+            $table->string('description');
+            $table->timestamps();
+        });
+        
+        Schema::create('sequences', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
             $table->string('description');
             $table->timestamps();
         });
@@ -39,6 +47,7 @@ class CreateAnimaticbuilderTable extends Migration
     public function down()
     {
         Schema::drop('frames');
+        Schema::drop('sequences');
         Schema::drop('images');
     }
 }

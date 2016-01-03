@@ -11,17 +11,6 @@
 |
 */
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-
-Route::get('login/{service}{action?}', 'LoginController@chooseService');
-Route::get('register/verify/{confirmationCode}', [
-    'as' => 'confirmation_path',
-    'uses' => 'RegistrationController@confirm'
-]);
-
 Route::resource('/', 'FramesController');
 
 /*
@@ -33,8 +22,9 @@ Route::resource('/', 'FramesController');
 | it contains. The "web" middleware group is defined in your HTTP
 | kernel and includes session state, CSRF protection, and more.
 |
+ *
+ */
 
-
-Route::group(['middleware' => ['web']], function () {
-    //
-});*/
+    Route::get('auth/logout', 'Auth\AuthController@logout');
+    Route::get('auth/google', 'Auth\AuthController@redirectToProvider');
+    Route::get('auth/google/callback', 'Auth\AuthController@handleProviderCallback');

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Frames;
+use Session;
 
 class FramesController extends Controller {
 
@@ -13,16 +14,14 @@ class FramesController extends Controller {
     {
         $user = \Auth::user();
         
-        dd($user);
-        
         if (\Auth::check()) {
             $frames = \DB::table('frames')->where('user_id', '=', $user->id)->get();
 
-            return view('welcome', compact('frames', 'user')); 
+            return view('welcome', compact('frames')); 
         } else {
             $frames = 'Not logged in.';
             
-            return view('welcome', compact('frames', 'user')); 
+            return view('welcome', compact('frames')); 
         }
  
     }

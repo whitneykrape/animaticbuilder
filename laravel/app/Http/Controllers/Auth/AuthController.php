@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Socialite;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -24,20 +25,13 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-
-    /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -51,7 +45,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            //'password' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:6',
         ]);
     }
 
@@ -66,7 +60,69 @@ class AuthController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            //'password' => bcrypt($data['password']),
+            'password' => bcrypt($data['password']),
         ]);
+    }
+    
+    /**
+     * Redirect the user to the Google authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    
+   public function getLogout()
+    {
+    	Auth::logout();
+
+	Session::flush();
+
+        return redirect('/');
+    }
+
+    /**
+     * Obtain the user information from Google.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback()
+    {
+        $userProfile = Socialite::driver('google')->user();
+        
+        print_r($userProfile->email);
+
+        $user = User::where('email', '=', $userProfile->email)->first();
+        
+        print_r($user);
+        
+        if ($user) {
+            $message = 'Google Login Success!';
+            \Session::flash('message', $message);
+
+            echo $userProfile->email;
+            \Auth::login($user, true);
+            
+            \Session::save('user', $user);
+
+            //$provider->logout();
+            //return \Redirect::to('/');
+        } else {
+            $message = 'Google Login Failed ' . print_r( $userProfile, true );
+            \Session::flash('message', $message);
+
+            /* $user = new User;
+            $user->name = $userProfile->displayName;
+            $user->email = $userProfile->email;
+            //$user->status = 0;
+            $user->save();
+            
+            \Auth::login($user); */
+
+            //$provider->logout();
+            //return \Redirect::to('/');
+        }
     }
 }

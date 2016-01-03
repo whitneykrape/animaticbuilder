@@ -1,4 +1,3 @@
-// Animatic Builder v1.40
 // http://www.gnu.org/licenses/gpl-3.0.txt Licensed under the GPL. Credit where credit is due. Developed by Whitney Krape
 // Refomatting data <
 var formatDuration = function(unformattedDuration) {
@@ -56,66 +55,10 @@ var localstatus = '';
 
 if (navigator.onLine) {
 
-$('#action').fadeIn().html('Skip caching. <img src="./structure/ab_loadnext.png" alt="Next"/>').bind('click', function () {
- cachestatus = 'ready';
- primarydrive();
+$('#action').fadeIn().html('Caching removed (obsolete.) <img src="./structure/ab_loadnext.png" alt="Next"/>').bind('click', function () {
+    cachestatus = 'ready';
+    primarydrive();
 });
-	
-// Listeners for all possible events
- var cache = window.applicationCache;
- var cacheStatusValues = [];
-  cacheStatusValues[0] = 'uncached';
-  cacheStatusValues[1] = 'idle';
-  cacheStatusValues[2] = 'checking';
-  cacheStatusValues[3] = 'downloading';
-  cacheStatusValues[4] = 'updateready';
-  cacheStatusValues[5] = 'obsolete';
- 
- cache.addEventListener('checking', function(e) {
-   $('#cache').fadeIn().html('Checking Manifest. <img id="working" src="./structure/ab_loadworking.gif" alt="working"/>');
-  }
- , false);
- 
- cache.addEventListener('progress', function(e) {
-   $('#cache').fadeIn().html('Downloading Manifest. <img id="working" src="./structure/ab_loadworking.gif" alt="working"/>');
-  }
- , false);
- 
- cache.addEventListener('downloading', function(e) {
-   $('#cache').fadeIn().html('Downloading Manifest. <img id="working" src="./structure/ab_loadworking.gif" alt="working"/>');
-  }
- , false);
- 
- cache.addEventListener('noupdate', function(e) {
-   $('#cache').fadeIn().html('Cache up to date. <img src="./structure/ab_loaddone.png" alt="Done"/>');
-    cachestatus = 'ready';
-	 primarydrive();
-  }
- , false);
- 
- cache.addEventListener('error', function(e) {
-   $('#cache').fadeIn().html('Cache error, may not be offline ready. <img src="./structure/ab_loadwarning.png" alt="Warning"/>');
-    cachestatus = 'error';
-  }
- , false);
- 
- cache.addEventListener('updateready', function(e) {
-   if (cacheStatusValues[cache.status] != 'idle') {
-    cache.swapCache();
-    // log('Swapped/updated the Cache Manifest.');
-    $('#cache').fadeIn().html('Cache downloaded. <img src="./structure/ab_loaddone.png" alt="Done"/>');
-    cachestatus = 'ready';
-	 primarydrive();
-   }
-  }
- , false);
- 
- cache.addEventListener('cached', function(e) {
-   $('#cache').fadeIn().html('Cache up to date. <img src="./structure/ab_loaddone.png" alt="Done"/>');
-    cachestatus = 'ready';
-	 primarydrive();
-  }
- , false);
  
  if (localStorage.getItem('meta')) {
   meta = localStorage.getItem('meta');
