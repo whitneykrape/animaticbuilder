@@ -17,7 +17,7 @@ http://www.gnu.org/licenses/gpl-3.0.txt Licensed under the GPL. Credit where cre
 <body>
 <div id="datawrapper">
  <ul class="checks" id="inital">
-  <li id="cache">Allow offline data? (Click pop-up to allow.) <img src="./structure/ab_loadwarning.png" alt="Warning"/></li>
+  <li id="cache">Offline data removed. <img src="./structure/ab_loadwarning.png" alt="Warning"/></li>
   <li id="localdata"></li>
   <li id="scan"><ul></ul></li>
   <li id="action">Error.</li>

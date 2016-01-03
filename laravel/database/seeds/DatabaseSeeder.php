@@ -55,7 +55,18 @@ class FramesTableSeeder extends Seeder {
 			'shotid' => '0',
 			'name' => 'Shot 1?',
                         'duration' => '00:01.000',
-                        'name' => 'Shot 1?',
+                        'name' => 'Shot 1',
+                        'image' => 'this.jpg',
+                        'description' => 'this.jpg',
+		]);
+                
+		Frames::create([
+			'user_id' => 1,
+                        'sequence' => 1,
+			'shotid' => '1',
+			'name' => 'Shot 1?',
+                        'duration' => '00:01.000',
+                        'name' => 'Shot 2',
                         'image' => 'this.jpg',
                         'description' => 'this.jpg',
 		]);

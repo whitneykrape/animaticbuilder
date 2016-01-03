@@ -53,7 +53,7 @@ var currentmeta = '';
 var cachestatus = '';
 var localstatus = '';
 
-if (navigator.onLine) {
+//if (navigator.onLine) {
 
 $('#action').fadeIn().html('Caching removed (obsolete.) <img src="./structure/ab_loadnext.png" alt="Next"/>').bind('click', function () {
     cachestatus = 'ready';
@@ -66,7 +66,7 @@ $('#action').fadeIn().html('Caching removed (obsolete.) <img src="./structure/ab
   localstatus = 'ready';
  } else {
   $('#localdata').fadeIn().html('Local Data does not exist, setting. <img src="./structure/ab_loadworking.gif" alt="Loading"/>');
-  $.get('downlink.php', function(data) {
+  $.get('list', function(data) {
    localStorage.setItem('meta', data);
 	$('#localdata').fadeIn().html('Local Data does not exist, set. <img src="./structure/ab_loaddone.png" alt="Done"/>');
   });
@@ -158,7 +158,7 @@ $('#action').fadeIn().html('Caching removed (obsolete.) <img src="./structure/ab
     
     if (i == (checkLength-1)) {
      localStorage.clear('currentmeta');
-     $.get('downlink.php', function(data) {
+     $.get('list', function(data) {
        localStorage.setItem('meta', data);
        // console.log(data);
      });
@@ -171,17 +171,17 @@ $('#action').fadeIn().html('Caching removed (obsolete.) <img src="./structure/ab
   }
  }
  primarydrive();
-} else {
+/*} else {
  localstatus = 'ready';
  cachestatus = 'ready';
  $('#cache').fadeIn().html('Cache Unchecked. <img src="./structure/ab_loadwarning.png" alt="Warning"/>');
  primarydrive();
-}
+} */
 
 function primarydrive() {
 // console.log(localstatus);
 // console.log(cachestatus);
- if (localstatus === 'ready' && cachestatus === 'ready') {
+ //if (localstatus === 'ready' && cachestatus === 'ready') {
   $('#datawrapper').fadeOut();
   // Initialize package functions. THESE ARE THE MAIN ENGINES <
   // Used for the vingette
@@ -191,7 +191,7 @@ function primarydrive() {
   // Get the data, start the show
   loadSequenceEngine();
   // >
- }
+ //}
 }
   
   // Whenever the window is resized readjust
@@ -478,9 +478,13 @@ function primarydrive() {
   // This goes to downlink.php and pulls every shot down then expands it from JSON into the series of shots.
   function loadSequenceEngine() {
    if (navigator.onLine) {
-    $.get('downlink.php', function(data) {
-     data = $.parseJSON(data);
-     $.each(data.sequence.meta, function(i, item) {
+    $.get('list', function(data) {
+     console.log(data);
+     $.each(data, function(i, item) {
+         console.log(item);
+     });
+    $.each(data, function(i, item) {
+      console.log(item);
       $('ul#shotlist').append( '<li class="shot" id="s' + item.shotid + '"> \
       <img src="./uploads/' + item.image + '" alt="' + item.image + '" /> \
       <div class="frame meta"> \

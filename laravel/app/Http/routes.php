@@ -12,6 +12,8 @@
 */
 
 Route::resource('/', 'FramesController');
+Route::get('/list', 'FramesController@listFrames');
+
 
 /*
 |--------------------------------------------------------------------------

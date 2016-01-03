@@ -34,6 +34,15 @@ class FramesController extends Controller {
     public function create()
     {
     }
+    
+    public function listFrames()
+    {
+        $user = \Auth::user();
+
+        $frames = \DB::table('frames')->where('user_id', '=', $user->id)->get();
+        
+        return $frames;
+    }
 
     public function store()
     {
