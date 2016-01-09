@@ -28,7 +28,6 @@ class FramesController extends Controller {
 
     public function destroy($id)
     {
-        $frames->where('id', '=', $id)->delete();
     }
 
     public function create()
