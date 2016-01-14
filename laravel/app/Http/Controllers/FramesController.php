@@ -32,6 +32,12 @@ class FramesController extends Controller {
 
     public function create()
     {
+        $all = \Input::all();
+    }
+
+    public function update($id)
+    {
+        $images->where('id', '=', $id)->update();
     }
     
     public function listFrames()

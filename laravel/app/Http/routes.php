@@ -12,9 +12,9 @@
 */
 
 Route::resource('/', 'FramesController');
+Route::resource('/frame/', 'FramesController');
 Route::get('/list', 'FramesController@listFrames');
-Route::resource('/frame/{id}', 'FrameController');
-Route::resource('/image/{id}', 'ImagesController');
+Route::resource('/image/', 'ImagesController');
 
 
 /*
